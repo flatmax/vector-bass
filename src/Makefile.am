@@ -1,4 +1,4 @@
-# Copyright (c) 2017 The WASM audio Authors. All rights reserved.
+# Copyright (c) 2017 The WASM Authors. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -26,19 +26,19 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-lib_LTLIBRARIES = libwasmaudio.la
+lib_LTLIBRARIES = libwasm.la
 
-libwasmaudio_la_SOURCES = Test.C
-libwasmaudio_la_CPPFLAGS = -I$(top_srcdir)/include
-libwasmaudio_la_LDFLAGS =  -version-info $(LT_CURRENT) -release $(LT_RELEASE)
+libwasm_la_SOURCES = Test.C
+libwasm_la_CPPFLAGS = -I$(top_srcdir)/include
+libwasm_la_LDFLAGS =  -version-info $(LT_CURRENT) -release $(LT_RELEASE)
 
 if HAVE_EMSCRIPTEN
-all-local: libwasmaudio.la
-	@emcc --bind -s TOTAL_MEMORY=32MB --llvm-lto 1 --memory-init-file 0 $(AM_CXXFLAGS) .libs/libwasmaudio.so -o .libs/libwasmaudio.js
-	mv .libs/libwasmaudio.js .libs/libwasmaudio.node
-	@emcc --bind --llvm-lto 1 --memory-init-file 0 -s "MODULARIZE=1" -s EXPORT_NAME="'libwasmaudio'" -s "BINARYEN_METHOD='native-wasm'" -s "WASM=1" -s ALLOW_MEMORY_GROWTH=1 $(AM_CXXFLAGS) .libs/libwasmaudio.so -o .libs/libwasmaudio.js
+all-local: libwasm.la
+	@emcc --bind -s TOTAL_MEMORY=32MB --llvm-lto 1 --memory-init-file 0 $(AM_CXXFLAGS) .libs/libwasm.so -o .libs/libwasm.js
+	mv .libs/libwasm.js .libs/libwasm.node
+	@emcc --bind --llvm-lto 1 --memory-init-file 0 -s "MODULARIZE=1" -s EXPORT_NAME="'libwasm'" -s "BINARYEN_METHOD='native-wasm'" -s "WASM=1" -s ALLOW_MEMORY_GROWTH=1 $(AM_CXXFLAGS) .libs/libwasm.so -o .libs/libwasm.js
 install-exec-hook:
-	cp .libs/libwasmaudio.js $(DESTDIR)$(libdir)
+	cp .libs/libwasm.js $(DESTDIR)$(libdir)
 clean-local:
-	@rm -f .libs/libwasmaudio.node
+	@rm -f .libs/libwasm.node
 endif

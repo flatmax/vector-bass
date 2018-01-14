@@ -39,13 +39,13 @@
       connectedCallback() {
         super.connectedCallback();
         var me=this;
-        this.loadWASM('libwasmaudio.js', function(){me.libwasmaudio=libwasmaudio({onRuntimeInitialized:console.log('libwasmaudio initalised')});}); // load in the wasm file
+        this.loadWASM('libwasm.js', function(){me.libwasm=libwasm({onRuntimeInitialized:console.log('libwasm initalised')});}); // load in the wasm file
       }
 
       /** test a WASM class
       */
       runTest(){
-        let test = new this.libwasmaudio.Test();
+        let test = new this.libwasm.Test();
         test.sayHello();
       }
     }

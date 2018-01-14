@@ -1,6 +1,7 @@
-# WASMAudio
+# WASM
 
-Trying to work out how to get audio going with WASM
+This is a project foundation for C++ and WASM.
+
 # Building
 ## Initial Setup
 
@@ -24,6 +25,8 @@ emmake make
 Really ?
 
 # Running the webapp
+
+Open a new terminal, then :
 
 cd webApp
 

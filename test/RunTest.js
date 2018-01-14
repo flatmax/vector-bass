@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-// Copyright (c) 2017 The WASM audio Authors. All rights reserved.
+// Copyright (c) 2017 The WASM Authors. All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions are
@@ -30,7 +30,7 @@
 
 "use strict";
 
-var libwasmaudio = require('../src/.libs/libwasmaudio');
+var libwasm = require('../src/.libs/libwasm');
 
 console.log('nodejs test currently not working. Webapp to come.');
 return;
