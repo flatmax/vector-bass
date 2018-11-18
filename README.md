@@ -24,6 +24,10 @@ emmake make
 
 Really ?
 
+# Running the nodejs version
+
+./test/RunTest.js
+
 # Running the webapp
 
 Open a new terminal, then :

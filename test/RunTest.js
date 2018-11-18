@@ -30,7 +30,7 @@
 
 "use strict";
 
-var libwasm = require('../src/.libs/libwasm');
-
-console.log('nodejs test currently not working. Webapp to come.');
+var libwasm = require('../src/.libs/libwasmNode');
+var test = new libwasm.Test;
+test.sayHello();
 return;
