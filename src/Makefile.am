@@ -34,7 +34,7 @@ libwasm_la_LDFLAGS =  -version-info $(LT_CURRENT) -release $(LT_RELEASE)
 
 if HAVE_EMSCRIPTEN
 all-local: libwasm.la
-	@emcc --bind -s TOTAL_MEMORY=32MB --llvm-lto 1 --memory-init-file 0 $(AM_CXXFLAGS) .libs/libwasm.so -o .libs/libwasm.js
+	@emcc --bind -s TOTAL_MEMORY=32MB --llvm-lto 1 -s WASM=0 --memory-init-file 0 $(AM_CXXFLAGS) .libs/libwasm.so -o .libs/libwasm.js
 	mv .libs/libwasm.js .libs/libwasmNode.js
 	@emcc --bind --llvm-lto 1 --memory-init-file 0 -s "MODULARIZE=1" -s EXPORT_NAME="'libwasm'" -s "BINARYEN_METHOD='native-wasm'" -s "WASM=1" -s ALLOW_MEMORY_GROWTH=1 $(AM_CXXFLAGS) .libs/libwasm.so -o .libs/libwasm.js
 install-exec-hook:
