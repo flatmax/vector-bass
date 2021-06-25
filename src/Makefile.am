@@ -39,7 +39,7 @@ all-local: libwasm.la
 	mv .libs/libwasm.js .libs/libwasmNode.js
 	cp .libs/libwasmNode.js ../nodejs/
 	@emcc --bind --llvm-opts 1 --memory-init-file 0 -s EXPORT_ES6=1 -s MODULARIZE=1 -s EXPORT_NAME="'libwasm'" -s SINGLE_FILE=1 -s "BINARYEN_METHOD='native-wasm'" -s WASM=1 -s ALLOW_MEMORY_GROWTH=1 $(AM_CXXFLAGS) .libs/libwasm.so -o .libs/libwasm.js
-	cp .libs/libwasm.js ../nodejs/
+	cp .libs/libwasm.js ../webcomponent/
 install-exec-hook:
 	cp .libs/libwasm.js $(DESTDIR)$(libdir)
 clean-local:
