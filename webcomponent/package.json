@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "WASM module from C++ example code for nodejs and the browser as a webcomponent",
   "main": "libwasmNode.js",
-  "scripts": {
-    "test": "test/WASMTest.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/flatmax/WASM.git"
