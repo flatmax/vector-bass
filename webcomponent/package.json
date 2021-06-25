@@ -1,5 +1,5 @@
 {
-  "name": "WASM",
+  "name": "libwasm",
   "version": "1.0.0",
   "description": "WASM module from C++ example code for nodejs and the browser as a webcomponent",
   "main": "libwasmNode.js",
