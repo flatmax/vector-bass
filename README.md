@@ -8,7 +8,7 @@ You can test the output for this packaing using nodejs in the nodejs directory.
 # Building
 ## Initial Setup
 
-./tools/autotools.sh
+./autogen.sh
 
 ### WASM
 
