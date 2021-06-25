@@ -1,0 +1,25 @@
+{
+  "name": "libwasm_node",
+  "version": "1.0.1",
+  "description": "Nodejs WASM C++ example from https://github.com/flatmax/WASM",
+  "main": "WASMTestNode.js",
+  "scripts": {
+    "test": "test/WASMTestNode.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flatmax/WASM.git"
+  },
+  "keywords": [
+    "WASM",
+    "C++",
+    "nodejs",
+    "libwasm"
+  ],
+  "author": "Flatmax",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/flatmax/WASM/issues"
+  },
+  "homepage": "https://github.com/flatmax/WASM#readme"
+}
