@@ -1,0 +1,52 @@
+Copyright 1998, 1999, 2000, 2001 Matt Flax <flatmax@ieee.org>
+
+MFFM vectorBass is an example of a few things :
+a] A melody line generation tool which lets you plot the pitch, volume and
+   'generic waveform sound'. This means you can essentially hear a piece of
+   music, grab and plot the synth. waveform and generate your own melody lines
+   using this synth. Whether the synth be a persons voice, bass or whatever !
+   This is accomplished by merging a FM (frequency modulator) and a Vector
+   Graphics application (XFig).
+b] Rapid prototyping using a vector graphics application as the front end
+   and a custom engine as the back end.
+
+For simple use ....
+Tyep 'make' and compile the program vectorBass
+Open doubleOctave.fig in xfig :
+			xfig doubleOctave.fig
+Run octave and execute the function output2wav :
+			output2wav "doubleOctave.fig" "doubleOctave.wav"
+
+HOME PAGE : http://mffmvectorbass.sourceforge.net/
+
+REQUIREMENTS : C++ compiler, XFig and octave http://www.octave.org
+
+NOTES:
+* Freq - The frequency with which the waveform is cycled ... 
+  To specify the same waveform at multiple frequencies, edit this like so ...
+  Freq 90 180 365
+  This would cycle the same waveform at 3 different frequencies, 
+  90, 180 and 365 Hz All frequencies would be present in the output wav file.
+* Range - The semi-tone count from central scale to top or bottom
+* Time - The total time for the output waveform
+
+* Pitch curve plots the pitch vs. time of the melody line
+* Volume curve plots the volume vs. time of the melody line
+* Pitch and Volume operate relative to the same scale
+
+* Waveform is a plot of one cycle of the curve to be cycled. It determines
+  'generic sound' of the synth.
+* Waveform is relative to its own scale.
+
+* Alter the system to use ideal sin waveforms, you need 
+  to alter 'vectorBass.C' simply uncomment :
+	//	audio->audio[(int)n]+=(short int)rint(volume*vol[j]*amplitude*(lastVal[j]=sin(rads)));
+  and comment out
+	audio->audio[(int)n]+=(short int)rint(volume*vol[j]*amplitude*(lastVal[j]=(*waveForm)[rads]));
+  PAY SPECIAL ATTENTION to the volume variables ... in particular vol is 
+  log scaled (from the code) :
+  for (int i=0;i<(int)srcCnt;i++){
+    vol[i]=pow(2.0,-(log(Freq.next())/log(2.0)-log(lowFreq)/log(2.0)));
+  For psycological experiment you may want to alter this.
+  Variable 'volume' itself is the volume curve drawn in the vector graphic
+  application. This should not require alteration.

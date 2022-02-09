@@ -1,0 +1,19 @@
+#FIG 3.2
+Landscape
+Center
+Metric
+A4      
+100.00
+Single
+-2
+1200 2
+2 1 0 1 0 7 50 0 -1 0.000 0 0 -1 0 0 2
+	 900 900 900 6300
+2 1 0 1 0 7 50 0 -1 0.000 0 0 -1 0 0 12
+	 1125 4140 1125 5265 1350 4140 1350 5040 1575 5040 1575 5040
+	 1575 5265 1710 1125 1800 5265 1800 4500 2025 4590 2025 4140
+4 0 0 50 0 0 12 0.0000 4 180 14445 270 7065 Rules: #Line depicting rangelimits must be vertical #Line depicting freqcurve must be more then two points #F r e q is a reserved word #R a n g e is a reserved word #T i m e is a reserved word\001
+4 0 0 50 0 0 12 0.0000 4 135 1635 1800 675 Time 5.166666666667\001
+4 0 0 50 0 0 12 0.0000 4 180 705 675 675 Range 12\001
+4 0 0 50 0 0 12 0.0000 4 90 330 450 3645 zero\001
+4 0 0 50 0 0 12 0.0000 4 180 1200 495 360 Freq 110 55 160\001
