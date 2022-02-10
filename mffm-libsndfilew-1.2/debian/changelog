@@ -1,0 +1,12 @@
+mffm-libsndfilew (1.2) unstable; urgency=low
+
+  * New upstream release
+
+ -- Matt Flax <flatmax@pgb.unsw.edu.au>  Tue, 18 Jan 2005 00:55:26 +1100
+
+mffm-libsndfilew (1.1-1) unstable; urgency=low
+
+  * Initial Release. (closes: #281648).
+
+ -- Matt Flax <flatmax@pgb.unsw.edu.au>  Thu, 18 Nov 2004 02:10:34 +1100
+

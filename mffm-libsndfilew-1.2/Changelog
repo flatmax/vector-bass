@@ -1,0 +1,5 @@
+v1.2 20/12/04 :
+ * Added the function 'readNWav' allows one to read a bit of a file at a time.
+
+v1.1 : 
+ * Change-log begun

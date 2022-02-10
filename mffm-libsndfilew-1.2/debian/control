@@ -1,0 +1,15 @@
+Source: mffm-libsndfilew
+Priority: optional
+Maintainer: Matt Flax <flatmax@pgb.unsw.edu.au>
+Build-Depends: debhelper (>= 4.0.0)
+Standards-Version: 3.6.1
+
+Package: mffm-libsndfilew-dev
+Section: libdevel
+Architecture: all
+Depends: 
+Description: wrapper for the libsndfile audio file handling library
+ A C-programming language wrapper for the libsndfile audio file handling
+ library (by erikd). The wrapper provides simple one line audio file read
+ and write methods
+ .
