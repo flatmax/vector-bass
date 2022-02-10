@@ -23,9 +23,9 @@
 
 #ifndef VECTORBASS_H_
 #define VECTORBASS_H_
-#include <fstream.h>
+#include <fstream>
 #include <math.h>
-#include <LinkList.H>
+#include "LinkList.H"
 #include "curve.H"
 #include "waveForm.H"
 

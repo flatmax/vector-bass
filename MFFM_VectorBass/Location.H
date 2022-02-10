@@ -18,7 +18,9 @@
 #ifndef LOCATION_H_
 #define LOCATION_H_
 
-#include <iomanip.h>
+// #include <iomanip.h>
+#include <iostream>
+using namespace std;
 
 /// An omni, x, y, and z location vector
 class loc {

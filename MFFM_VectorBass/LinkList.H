@@ -19,7 +19,9 @@
 #define LINKLIST_H
 
 #include <sys/types.h>
-#include <iomanip.h>
+// #include <iomanip.h>
+#include <iostream>
+using namespace std;
 
 //#define LINKLIST_DEBUG
 

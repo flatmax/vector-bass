@@ -20,7 +20,7 @@
 
 //#define XFIGPARSE_DEBUG
 
-#include <fstream.h>
+#include <fstream>
 #include <stdlib.h>
 #include <values.h>
 #include <math.h>
@@ -119,7 +119,7 @@ class XFigParse {
   }
 
   //Removes and deletes all locs and loc linked list
-  double remLocs(LinkList<loc *> *locs){
+  void remLocs(LinkList<loc *> *locs){
     loc *tempLoc;
     while (locs->getCount()){
       tempLoc=locs->remove();

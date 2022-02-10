@@ -14,8 +14,8 @@
 #  You have received a copy of the GNU General Public License
 #  along with MFFM VectorBass
 
-CC=g++-3.0 -ggdb
-CC=g++-3.0 -O2
+CC=g++ -ggdb
+CC=g++ -O2
 
 LIBPATH=-L/home/flatmax/lib
 LIBS=#-l3DPanner #-lSpline -lfitpack
@@ -35,10 +35,10 @@ all: $(OBJ) \
 	ex
 
 ex: $(OBJ)
-	$(COMPILE) -lsndfile -L/home/flatmax/lib -lVB vectorBassTest.cc -o vectorBass
+	$(COMPILE) ./*.o -lsndfile vectorBassTest.cc -o vectorBass
 #	$(COMPILE) XFigParseTest.cc -o XFigParseTest
 #	g++ -laudiofile audio2fig.C -o audio2fig
-	$(CC) -lsndfile -L/home/flatmax/lib -lVB audio2fig.C -o audio2fig
+	#$(CC) audio2fig.C -lsndfile -o audio2fig
 
 lib:
 	$(CC) -Wl,-shared,-soname,libVB.so.0.1 -o libVB.so.0.1 $(OBJ)

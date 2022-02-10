@@ -19,7 +19,7 @@
 #define WAVEFORM_H_
 #include <fstream>
 #include <math.h>
-#include <LinkList.H>
+#include "LinkList.H"
 #include "Location.H"
 
 #define SAMPLE_RATE 44100

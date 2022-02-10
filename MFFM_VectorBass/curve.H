@@ -18,7 +18,7 @@
 #ifndef CURVE_H_
 #define CURVE_H_
 #include <math.h>
-#include <LinkList.H>
+#include "LinkList.H"
 #include "Location.H"
 
 #define SAMPLE_RATE 44100

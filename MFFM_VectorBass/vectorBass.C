@@ -15,14 +15,16 @@
    along with MFFM VectorBass
  */
 
-#include <fstream.h>
+#include <fstream>
 #include <sys/stat.h>
 #include <values.h>
 #include <unistd.h>
 
-#include "libSndFileWrapper.H"
+#include "../mffm-libsndfilew-1.2/libSndFileWrapper.H"
 #include "vectorBass.H"
 #include "XFigParse.H"
+
+using namespace std;
 
 #define DEG2RAD 2.0*M_PI
 
@@ -429,7 +431,7 @@ generateBass(void){
   Volume.grab(2);
   VolCurve.b.grab(1); VolCurve.c.grab(1);
   currentX=FreqERB.grab(1)->x;
-  register double t=0.0, volume, volXOffset=0.0;
+  double t=0.0, volume, volXOffset=0.0;
   for (int i=0;i<FreqERB.getCount()-1;i++){
     currentX=FreqERB.next()->x;
     //    cout<<"currentX "<<currentX<<endl;
@@ -486,6 +488,7 @@ generateBass(void){
   //Indicate change over is ready ...
   changeOver=1;
   cout<<"VectorBass::generateBass : exit "<<endl;
+  return 0;
 }
 
 void VectorBass::

@@ -52,7 +52,7 @@ XFigOOutput::XFigOOutput(char *fileName, int numberOfPoints, char* objectComment
   }
 
   //Use to start a new object in the same ope file ... defaults to no forward arrow and line object
-  void XFigOOutput::newObject(int numberOfPoints, char* objectComment, int f_arrow=0, int p_colour=-1, XFigObject object=LINE){
+  void XFigOOutput::newObject(int numberOfPoints, char* objectComment, int f_arrow, int p_colour, XFigObject object){
     if (p_colour>6)
       p_colour%=6;
     //Dump default object information

@@ -1,7 +1,8 @@
 #ifndef XFIGOOUTPUT_H_
 #define XFIGOOUTPUT_H_
 
-#include <fstream.h>
+#include <fstream>
+using namespace std;
 
 ///Audio related defines below
 #define MAXWAVHEIGHT 32768//2^(16)/2
