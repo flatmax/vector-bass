@@ -168,6 +168,29 @@ parseFig(ifstream *input){
     return FERQERB_ERR;
   }
 
+  cout<<"============ BEGIN Dumping variables =================="<<endl;
+  cout<<"Freq : "<<endl;
+  dumpLL(&Freq); // print out this linked list
+
+  cout<<"time : "<<time<<endl;
+  cout<<"range : "<<range<<endl;
+
+  cout<<"ERBRange : "<<endl;
+  dumpLL(&ERBRange); // print out this linked list
+
+  cout<<"FreqERB : "<<endl;
+  dumpLL(&FreqERB); // print out this linked list
+
+  cout<<"Volume : "<<endl;
+  dumpLL(&Volume); // print out this linked list
+
+  cout<<"WavRange : "<<endl;
+  dumpLL(&WavRange); // print out this linked list
+
+  cout<<"Wave : "<<endl;
+  dumpLL(&Wave); // print out this linked list
+  cout<<"============ END Dumping variables =================="<<endl;
+
   //Alloc memory
   allocMem();
   //Find the ERB values for the frequencies ...

@@ -117,5 +117,19 @@ public:
   void goChangeOver();
   int processFile(const char *iFName);
   //  int processFile(int iFID);
+
+  void dumpLL(LinkList<double> *v){
+    v->grab(1); v->prev();
+    for (int i=0; i<v->getCount(); i++)
+      cout<<v->next()<<", ";
+    cout<<endl;
+  }
+
+  void dumpLL(LinkList<loc *> *v){
+    v->grab(1); v->prev();
+    for (int i=0; i<v->getCount(); i++)
+      cout<<*v->next()<<", ";
+    cout<<endl;
+  }
 };
 #endif //VECTORBASS_H_
