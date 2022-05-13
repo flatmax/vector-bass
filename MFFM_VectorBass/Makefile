@@ -1,4 +1,5 @@
 # Copyright 1998, 1999, 2000, 2001 Matt Flax <flatmax@ieee.org>
+# Copyright 1998-2022 Flatmax Pty Ltd
 #  This file is part of MFFM VectorBass.
 #
 #  MFFM VectorBass is free software; you can redistribute it and/or modify
@@ -36,6 +37,7 @@ all: $(OBJ) \
 
 ex: $(OBJ)
 	$(COMPILE) ./*.o -lsndfile vectorBassTest.cc -o vectorBass
+	$(COMPILE) ./*.o -lsndfile vectorBassTest.C -o vectorBassTest
 #	$(COMPILE) XFigParseTest.cc -o XFigParseTest
 #	g++ -laudiofile audio2fig.C -o audio2fig
 	#$(CC) audio2fig.C -lsndfile -o audio2fig

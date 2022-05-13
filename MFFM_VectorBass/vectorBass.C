@@ -141,6 +141,8 @@ process(){
   //Check the variables
   if (Freq.getCount()<1){
     cerr<<"VectorBass:: : Not enough frequencies "<<endl;
+    cout<<"Freq : "<<endl;
+    dumpLL(&Freq); // print out this linked list
     return FERQ_ERR;
   }
   if (time<=0){

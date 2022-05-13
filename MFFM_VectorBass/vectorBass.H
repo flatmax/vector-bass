@@ -99,13 +99,9 @@ class VectorBass {
 
   int allocMem(void);
   void deAllocMem(void);
-  int generateBass(void);
   int readFile(const char *fName);
   //int readFile(int fID);
   int parseFig(ifstream *input);
-
-  /// process the output
-  int process();
 
   BassLine *audio; // The audio which is being processed
 protected:
@@ -121,6 +117,8 @@ protected:
   }
 
 public:
+  int generateBass(void);
+
   enum VECTORBASS_ERRORS {FILEOPEN_ERR=-1, FERQ_ERR=-2, TIME_ERR=-3, RANGE_ERR=-4, ERBRANGE_ERR=-5, FERQERB_ERR=-6, MALLOC_ERR=-7, XALIGNED_ERR=-7};
 
   BassLine *outputAudio;
@@ -150,11 +148,14 @@ public:
     cout<<endl;
   }
 
+  /// process the output
+  int process();
+
   /** Add an oscillation frequency to the list. Each oscillation frequency will be
   the frequency used to oscillate the waveform by. It is polyphonic.
   @param f A frequency to oscillate the waveform at
   */
-  void addFreq(double f){ERB.add(freq2ERB(f));}
+  void addFreq(double f){Freq.add(f); ERB.add(freq2ERB(f));}
 
   /** The duration in seconds to generate the output for.
   @param t Time in seconds
