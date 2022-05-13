@@ -5,12 +5,12 @@
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation; either version 2 of the License, or
    (at your option) any later version.
-   
+
    MFFM VectorBass is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-   
+
    You have received a copy of the GNU General Public License
    along with MFFM VectorBass
  */
@@ -27,20 +27,6 @@
 using namespace std;
 
 #define DEG2RAD 2.0*M_PI
-
-//#define C1 24.673
-#define C2 4.368
-//C3=(2302.6/(c1 * c2));
-#define C3 21.366
-
-double 
-freq2ERB(double freq){
-  return (C3*log10((C2 * freq/1000.0) + 1.0));
-}
-double
-ERB2freq(double erb){
-  return 1000.0 * (pow(10.0,(erb/C3)) - 1.0) / C2;
-}
 
 VectorBass::
 VectorBass(void){
@@ -146,6 +132,12 @@ parseFig(ifstream *input){
 
   XFigParse xInput;
   xInput.getVariables(&Freq, &time, &range, &ERBRange, &FreqERB, &Volume, &WavRange, &Wave, input);
+
+  return process();
+}
+
+int VectorBass::
+process(){
   //Check the variables
   if (Freq.getCount()<1){
     cerr<<"VectorBass:: : Not enough frequencies "<<endl;
@@ -224,7 +216,7 @@ parseFig(ifstream *input){
   }
 
   yMax=range/(double)OCTAVE; yMin=-range/(double)OCTAVE;
-  
+
   xMax-=xMin; xMin=0;
 
   //cout<<"xMin, xMax : "<<xMin<<'\t'<<xMax<<endl;
@@ -255,7 +247,7 @@ parseFig(ifstream *input){
       if ((Wave.current()->x-=minX)<lastX)//Fix X's which are b4 last X
 	Wave.current()->x=lastX;
       lastX=Wave.current()->x;
-      
+
       Wave.current()->y=-(Wave.current()->y-zeroPoint)/(height/2.0);
 
       Wave.next();
@@ -350,7 +342,7 @@ processFile(const char *iFName){
     return res;
   if ((res=generateBass())<0)
     return res;
-  
+
   struct stat figFileStatus;
   if (stat(iFName, &figFileStatus)<0){
     cerr<<"VectorBass::processFile : fstat error returning 0"<<endl;
@@ -430,7 +422,7 @@ generateBass(void){
   }
   //cout<<"lowest Freq = "<<lowFreq<<endl;
   //cout<<"highest Freq = "<<highFreq<<endl;
-  
+
     //Find the volume
     //    tempOct=grad*t+cStart;
     //vol=pow(2.0,-(log(Freq.current())/log(2.0)-log(lowFreq)/log(2.0)+tempOct-lowOct));
@@ -446,7 +438,7 @@ generateBass(void){
   }
   //cout<<"lowest Octave = "<<lowOct<<endl;
   //cout<<"highest Octave = "<<highOct<<endl;
-  
+
   //cout.precision(10);
   //  ofstream output("volume.txt");
   //ofstream output("temp.txt");
@@ -515,9 +507,9 @@ generateBass(void){
 }
 
 void VectorBass::
-goChangeOver(void){ 
+goChangeOver(void){
   cout<<"VectorBass::goChangeOver enter"<<endl;
- // Copy the audio to the output buffer ...  
+ // Copy the audio to the output buffer ...
   BassLine *temp=outputAudio;
   outputAudio=audio;
   audio=NULL;
