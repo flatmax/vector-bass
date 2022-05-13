@@ -1,18 +1,18 @@
-/* Copyright 1998, 1999, 2000, 2001 Matt Flax <flatmax@ieee.org>
-   This file is part of MFFM VectorBass.
+/* Copyright 1998-2022 Flatmax Pty Ltd
+   This file is part of MFFM VectorSynth (previously VectorBass).
 
-   MFFM VectorBass is free software; you can redistribute it and/or modify
+   MFFM VectorSynth (previously VectorBass) is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation; either version 2 of the License, or
    (at your option) any later version.
 
-   MFFM VectorBass is distributed in the hope that it will be useful,
+   MFFM VectorSynth (previously VectorBass) is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
 
    You have received a copy of the GNU General Public License
-   along with MFFM VectorBass
+   along with MFFM VectorSynth (previously VectorBass)
  */
 
 #include <fstream>
@@ -21,15 +21,15 @@
 #include <unistd.h>
 
 #include "../mffm-libsndfilew-1.2/libSndFileWrapper.H"
-#include "vectorBass.H"
+#include "vectorSynth.H"
 #include "XFigParse.H"
 
 using namespace std;
 
 #define DEG2RAD 2.0*M_PI
 
-VectorBass::
-VectorBass(void){
+VectorSynth::
+VectorSynth(void){
   outputAudio=audio=NULL;
   procAudio=NULL;
   waveForm=NULL;
@@ -37,13 +37,13 @@ VectorBass(void){
   changeOver=0;
 }
 
-VectorBass::
-~VectorBass(void){
+VectorSynth::
+~VectorSynth(void){
   deAllocMem();
   if (outputAudio) delete outputAudio; outputAudio=NULL;
 }
 
-void VectorBass::
+void VectorSynth::
 deAllocMem(void){
   if (audio) delete audio;
   if (procAudio) delete [] procAudio; procAudio=NULL;
@@ -76,34 +76,34 @@ deAllocMem(void){
   }
 }
 
-int VectorBass::
+int VectorSynth::
 allocMem(void){
   int tempCnt=(int)rint(time*(double)SAMPLE_RATE);
   if (tempCnt<=0){
-      cerr<<"VectorBass::allocMem : Size must be > 0 "<<endl;
+      cerr<<"VectorSynth::allocMem : Size must be > 0 "<<endl;
       return MALLOC_ERR;
   }
   if (!outputAudio)
     if (!(outputAudio=new BassLine(tempCnt))){
-      cerr<<"VectorBass::allocMem : Couldn't alloc outputAudio bassline of size "<<tempCnt<<endl;
+      cerr<<"VectorSynth::allocMem : Couldn't alloc outputAudio synthline of size "<<tempCnt<<endl;
       return MALLOC_ERR;
     }
 
   if (!(audio=new BassLine(tempCnt))){
-    cerr<<"VectorBass::allocMem : Couldn't alloc Audio bassline of size "<<tempCnt<<endl;
+    cerr<<"VectorSynth::allocMem : Couldn't alloc Audio synthline of size "<<tempCnt<<endl;
     return MALLOC_ERR;
   }
   if (!(procAudio=new double[tempCnt])){
-    cerr<<"VectorBass::allocMem : Couldn't alloc array of size "<<tempCnt<<endl;
+    cerr<<"VectorSynth::allocMem : Couldn't alloc array of size "<<tempCnt<<endl;
     return MALLOC_ERR;
   }
 
   return 0;
 }
 
-int VectorBass::
+int VectorSynth::
 readFile(const char *fName){
-  //cout<<"VectorBass::readFile : fName"<<endl;
+  //cout<<"VectorSynth::readFile : fName"<<endl;
   // Read in the variables
   ifstream input(fName);
   int res=parseFig(&input);
@@ -112,19 +112,19 @@ readFile(const char *fName){
   return res;
 }
 
-/*int VectorBass::
+/*int VectorSynth::
 readFile(int fID){
-  //cout<<"VectorBass::readFile : fID"<<endl;
+  //cout<<"VectorSynth::readFile : fID"<<endl;
   // Read in the variables
   ifstream input(fID);
   return parseFig(&input);
   }*/
 
-int VectorBass::
+int VectorSynth::
 parseFig(ifstream *input){
-  cout<<"VectorBass::parseFig : input"<<endl;
+  cout<<"VectorSynth::parseFig : input"<<endl;
   if (!input){
-    cerr<<"VectorBass::readFile : Couldn't open file "<<endl;
+    cerr<<"VectorSynth::readFile : Couldn't open file "<<endl;
     return FILEOPEN_ERR;
   }
   //Free all memory
@@ -136,29 +136,29 @@ parseFig(ifstream *input){
   return process();
 }
 
-int VectorBass::
+int VectorSynth::
 process(){
   //Check the variables
   if (Freq.getCount()<1){
-    cerr<<"VectorBass:: : Not enough frequencies "<<endl;
+    cerr<<"VectorSynth:: : Not enough frequencies "<<endl;
     cout<<"Freq : "<<endl;
     dumpLL(&Freq); // print out this linked list
     return FERQ_ERR;
   }
   if (time<=0){
-    cerr<<"VectorBass:: : Impossible time "<<time<<endl;
+    cerr<<"VectorSynth:: : Impossible time "<<time<<endl;
     return TIME_ERR;
   }
   if (range<0){
-    cerr<<"VectorBass:: : Impossible range (must be >0)"<<range<<endl;
+    cerr<<"VectorSynth:: : Impossible range (must be >0)"<<range<<endl;
     return RANGE_ERR;
   }
   if (ERBRange.getCount()!=2){
-    cerr<<"VectorBass:: : Couldn't find the vertical range line "<<endl;
+    cerr<<"VectorSynth:: : Couldn't find the vertical range line "<<endl;
     return ERBRANGE_ERR;
   }
   if (FreqERB.getCount()<2){
-    cerr<<"VectorBass:: : Not enough points in the frequency bend line "<<endl;
+    cerr<<"VectorSynth:: : Not enough points in the frequency bend line "<<endl;
     return FERQERB_ERR;
   }
 
@@ -263,11 +263,11 @@ process(){
 
     //Allocate the waveform structure ...
     if (!(waveForm= new WaveForm(&WaveCurve.b, &WaveCurve.c, &Wave))){
-      cerr<<"VectorBass::parseFig : Couldn't alloc waveForm"<<endl;
+      cerr<<"VectorSynth::parseFig : Couldn't alloc waveForm"<<endl;
       return MALLOC_ERR;
     }
   } else {
-    cerr<<"VectorBass::parseFig : WavRange or Waveform line not found aborting"<<endl;
+    cerr<<"VectorSynth::parseFig : WavRange or Waveform line not found aborting"<<endl;
     exit(-1);
   }
 
@@ -313,15 +313,15 @@ process(){
     //    for (int i=0;i<VolCurve.b.getCount();i++)
     //  cout<<VolCurve.b.grab(i+1)<<'\t'<<VolCurve.c.grab(i+1)<<endl;
   }
-  cout<<"VectorBass::parseFig : exit"<<endl;
+  cout<<"VectorSynth::parseFig : exit"<<endl;
   return 0;
 }
 
-int VectorBass::
+int VectorSynth::
 writeFile(const char *fName){
   ofstream output(fName);
   if (!output){
-    cerr<<"VectorBass::writeFile : Couldn't open file "<<fName<<endl;
+    cerr<<"VectorSynth::writeFile : Couldn't open file "<<fName<<endl;
     return FILEOPEN_ERR;
   }
   for (int i=0;i<outputAudio->audioSampleCount;i++)
@@ -330,49 +330,49 @@ writeFile(const char *fName){
   return 0;
 }
 
-int VectorBass::
+int VectorSynth::
 writeWavFile(const char *fName){
   writeWav(fName, outputAudio->audioSampleCount, &outputAudio->audio[0], SAMPLE_RATE, 1/*channel cnt*/, 16/*bit cnt*/);
   return 0;
 }
 
-int VectorBass::
+int VectorSynth::
 processFile(const char *iFName){
-  //cout<<"VectorBass::processFile iFName : enter"<<endl;
+  //cout<<"VectorSynth::processFile iFName : enter"<<endl;
   int res=0;
   if ((res=readFile(iFName))<0)
     return res;
-  if ((res=generateBass())<0)
+  if ((res=generateSynth())<0)
     return res;
 
   struct stat figFileStatus;
   if (stat(iFName, &figFileStatus)<0){
-    cerr<<"VectorBass::processFile : fstat error returning 0"<<endl;
+    cerr<<"VectorSynth::processFile : fstat error returning 0"<<endl;
     return 0;
   }
   return figFileStatus.st_ctime;
 }
 
-/*int VectorBass::
+/*int VectorSynth::
 processFile(int iFID){
-  //cout<<"VectorBass::processFile iFID : enter"<<endl;
+  //cout<<"VectorSynth::processFile iFID : enter"<<endl;
   int res=0;
   if ((res=readFile(iFID))<0)
     return res;
-  if ((res=generateBass())<0)
+  if ((res=generateSynth())<0)
     return res;
 
   struct stat figFileStatus;
   if (fstat(iFID, &figFileStatus)<0){
-    cerr<<"VectorBass::processFile : fstat error returning 0"<<endl;
+    cerr<<"VectorSynth::processFile : fstat error returning 0"<<endl;
     return 0;
   }
   return figFileStatus.st_ctime;
   }*/
 
-int VectorBass::
-generateBass(void){
-  cout<<"VectorBass::generateBass : enter "<<endl;
+int VectorSynth::
+generateSynth(void){
+  cout<<"VectorSynth::generateSynth : enter "<<endl;
   while (changeOver) usleep(10000);
   /*cout<<"Freq count "<<Freq.getCount()<<endl;
   cout<<"ERB count "<<ERB.getCount()<<endl;
@@ -504,13 +504,13 @@ generateBass(void){
 
   //Indicate change over is ready ...
   changeOver=1;
-  cout<<"VectorBass::generateBass : exit "<<endl;
+  cout<<"VectorSynth::generateSynth : exit "<<endl;
   return 0;
 }
 
-void VectorBass::
+void VectorSynth::
 goChangeOver(void){
-  cout<<"VectorBass::goChangeOver enter"<<endl;
+  cout<<"VectorSynth::goChangeOver enter"<<endl;
  // Copy the audio to the output buffer ...
   BassLine *temp=outputAudio;
   outputAudio=audio;
@@ -518,6 +518,6 @@ goChangeOver(void){
   if (temp) delete temp;
   changeOver=0;
 
-  cout<<"VectorBass::goChangeOver exit"<<endl;
+  cout<<"VectorSynth::goChangeOver exit"<<endl;
   //  writeFile(oFName);
 }

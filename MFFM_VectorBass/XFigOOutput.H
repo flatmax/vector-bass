@@ -1,3 +1,20 @@
+/* Copyright 1998-2022 Flatmax Pty Ltd
+   This file is part of MFFM VectorSynth (previously VectorBass).
+
+   MFFM VectorSynth (previously VectorBass) is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+
+   MFFM VectorSynth (previously VectorBass) is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You have received a copy of the GNU General Public License
+   along with MFFM VectorSynth (previously VectorBass)
+ */
+
 #ifndef XFIGOOUTPUT_H_
 #define XFIGOOUTPUT_H_
 
@@ -61,7 +78,7 @@ class XFigOOutput : public ofstream {
 public:
   //Use this to write the header to the file ...
   XFigOOutput(char *fileName);
-    
+
   //Use this to write the header to file and a line header too
   XFigOOutput(char *fileName, int numberOfPoints, char* objectComment, XFigObject object=LINE);
 

@@ -1,6 +1,6 @@
 *.o
 *.so*
 *~
-vectorBass
-vectorBassTest
+vectorSynth
+vectorSynthTest
 *.fig.bak

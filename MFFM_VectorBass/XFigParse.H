@@ -1,18 +1,18 @@
-/* Copyright 1998, 1999, 2000, 2001 Matt Flax <flatmax@ieee.org>
-   This file is part of MFFM VectorBass.
+/* Copyright 1998-2022 Flatmax Pty Ltd
+   This file is part of MFFM VectorSynth (previously VectorBass).
 
-   MFFM VectorBass is free software; you can redistribute it and/or modify
+   MFFM VectorSynth (previously VectorBass) is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation; either version 2 of the License, or
    (at your option) any later version.
-   
-   MFFM VectorBass is distributed in the hope that it will be useful,
+
+   MFFM VectorSynth (previously VectorBass) is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-   
+
    You have received a copy of the GNU General Public License
-   along with MFFM VectorBass
+   along with MFFM VectorSynth (previously VectorBass)
  */
 
 #ifndef XFIGPARSE_H_
@@ -137,11 +137,11 @@ class XFigParse {
 	while (line->getCount()) // Remove reverse order ...
 	  tempERB.add(line->remove());
 	line->dir=LinkList<loc *>::FWD;
-	
+
 	tempERB.grab(1);
 	while (tempERB.getCount()) // Replace forward order
 	  line->add(tempERB.remove());
-      }      
+      }
   }
 
   void checkReverseY(LinkList<loc *> *line){
@@ -153,11 +153,11 @@ class XFigParse {
 	while (line->getCount()) // Remove reverse order ...
 	  tempERB.add(line->remove());
 	line->dir=LinkList<loc *>::FWD;
-	
+
 	tempERB.grab(1);
 	while (tempERB.getCount()) // Replace forward order
 	  line->add(tempERB.remove());
-      }      
+      }
   }
 
   //Finds the closest line to the range line, with ID 'lineID' and returns 'retLine'
@@ -197,7 +197,7 @@ class XFigParse {
       lineHolder.grab(which); lineHolder.current()->grab(1);
       while (lineHolder.current()->getCount())
 	retLine->add(lineHolder.current()->remove());
-      
+
       //Delete the unwanted lines
       while (lineHolder.getCount())
 	remLocs(lineHolder.remove());
@@ -245,9 +245,9 @@ public:
 		    double *time,
 		    double *range,
 		    LinkList<loc *> *ERBRange,
-		    LinkList<loc *> *FreqERB, 
-		    LinkList<loc *> *Volume, 
-		    LinkList<loc *> *WavRange, 
+		    LinkList<loc *> *FreqERB,
+		    LinkList<loc *> *Volume,
+		    LinkList<loc *> *WavRange,
 		    LinkList<loc *> *Wave, ifstream *input){
     //#ifdef XFIGPARSE_DEBUG
     cout<<"XFigParse::getVariable : enter"<<endl;
@@ -272,7 +272,7 @@ public:
     while (*input>>tempW && strcmp("Time", tempW)!=0);
     *input>>tempD; *time=tempD;
     cout <<"Length (time) set to : "<<*time<<endl;
-    
+
     input->clear();
     input->seekg(0);
     // Find the Range ...
@@ -321,7 +321,7 @@ public:
 
     input->clear();
     input->seekg(0);
-    cout<<"XFigParse::getVariable : exit"<<endl;    
+    cout<<"XFigParse::getVariable : exit"<<endl;
   }
 };
 #endif//XFIGPARSE_H_

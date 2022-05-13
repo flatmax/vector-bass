@@ -1,4 +1,21 @@
-#include "vectorBass.H"
+/* Copyright 1998-2022 Flatmax Pty Ltd
+   This file is part of MFFM VectorSynth (previously VectorBass).
+
+   MFFM VectorSynth (previously VectorBass) is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+
+   MFFM VectorSynth (previously VectorBass) is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You have received a copy of the GNU General Public License
+   along with MFFM VectorSynth (previously VectorBass)
+ */
+
+#include "vectorSynth.H"
 
 int main(int argc, char **arg){
   if (argc != 2){
@@ -6,7 +23,7 @@ int main(int argc, char **arg){
     exit(-1);
   }
 
-  VectorBass vb;
+  VectorSynth vb;
 
   // the following data is taken from newhello.fig
 
@@ -47,7 +64,7 @@ int main(int argc, char **arg){
   int ret;
   if ((ret=vb.process())!=0)
     return ret;
-  if ((ret=vb.generateBass())<0)
+  if ((ret=vb.generateSynth())<0)
     return ret;
 
   while (!vb.changeOver);

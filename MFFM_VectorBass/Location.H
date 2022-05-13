@@ -1,18 +1,18 @@
-/* Copyright 1998, 1999, 2000, 2001 Matt Flax <flatmax@ieee.org>
-   This file is now also part of MFFM VectorBass.
+/* Copyright 1998-2022 Flatmax Pty Ltd
+   This file is now also part of MFFM VectorSynth (previously VectorBass).
 
-   MFFM VectorBass is free software; you can redistribute it and/or modify
+   MFFM VectorSynth (previously VectorBass) is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation; either version 2 of the License, or
    (at your option) any later version.
    
-   MFFM VectorBass is distributed in the hope that it will be useful,
+   MFFM VectorSynth (previously VectorBass) is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
    
    You have received a copy of the GNU General Public License
-   along with MFFM VectorBass
+   along with MFFM VectorSynth (previously VectorBass)
  */
 
 #ifndef LOCATION_H_

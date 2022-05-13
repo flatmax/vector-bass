@@ -15,34 +15,18 @@
    along with MFFM VectorSynth (previously VectorBass)
  */
 
-#include <LinkList.H>
+#include "vectorSynth.H"
 
-#include "XFigParse.H"
-#include "../2daudio/Location.H"
-
-/** Compile and run like so :
-    g++ XFigParseTest.cc -o XFigParseTest -L/home/flatmax/lib -l3DPanner; ./XFigParseTest hello.fig
-*/
-
-LinkList<double> Freq;
-double time;
-double range;
-LinkList<loc *> ERBRange;
-LinkList<loc *> FreqERB;
-LinkList<loc *> Volume;
-LinkList<loc *> WavRange;
-LinkList<loc *> Wave;
-
-void main(int argc, char **arg){
-  //for (int i=0;i<argc;i++)
-  //  cout<<arg[i]<<endl;
-
-  if (argc != 2){
-    cerr<<"Useage: "<<arg[0]<<" filtename.fig"<<endl;
+int main(int argc, char **arg){
+  if (argc != 3){
+    cerr<<"Useage: "<<arg[0]<<" filename.fig otuput.wav"<<endl;
     exit(-1);
   }
 
-  ifstream input(arg[1]);
-  XFigParse parser;
-  parser.getVariables(&Freq, &time, &range, &ERBRange, &FreqERB, &Volume, &WavRange, &Wave, &input);
+  VectorSynth vb;
+  vb.processFile(arg[1]);
+  while (!vb.changeOver);
+  vb.goChangeOver();
+  vb.writeWavFile(arg[2]);
+  return 1;
 }

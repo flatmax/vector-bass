@@ -1,28 +1,28 @@
-/* Copyright 1998, 1999, 2000, 2001 Matt Flax <flatmax@ieee.org>
-   This file is part of MFFM VectorBass.
+/* Copyright 1998-2022 Flatmax Pty Ltd
+   This file is part of MFFM VectorSynth (previously VectorBass).
 
-   MFFM VectorBass is free software; you can redistribute it and/or modify
+   MFFM VectorSynth (previously VectorBass) is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
    the Free Software Foundation; either version 2 of the License, or
    (at your option) any later version.
 
-   MFFM VectorBass is distributed in the hope that it will be useful,
+   MFFM VectorSynth (previously VectorBass) is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
 
    You have received a copy of the GNU General Public License
-   along with MFFM VectorBass
+   along with MFFM VectorSynth (previously VectorBass)
  */
 
-/* A note on history of conception for MFFM VectorBass .....
+/* A note on history of conception for MFFM VectorSynth (previously VectorBass) .....
    Originaly this was based on using the ERB scal for perceptual scaling,
    something similar but more accurate then the Bark band scale. ERB
    references are now historic.
  */
 
-#ifndef VECTORBASS_H_
-#define VECTORBASS_H_
+#ifndef VECTORSYNTH_H_
+#define VECTORSYNTH_H_
 #include <fstream>
 #include <math.h>
 #include "LinkList.H"
@@ -77,7 +77,7 @@ public:
       }*/
 };
 
-class VectorBass {
+class VectorSynth {
   LinkList<double> Freq;
   LinkList<double> ERB;
   double time;
@@ -117,15 +117,15 @@ protected:
   }
 
 public:
-  int generateBass(void);
+  int generateSynth(void);
 
-  enum VECTORBASS_ERRORS {FILEOPEN_ERR=-1, FERQ_ERR=-2, TIME_ERR=-3, RANGE_ERR=-4, ERBRANGE_ERR=-5, FERQERB_ERR=-6, MALLOC_ERR=-7, XALIGNED_ERR=-7};
+  enum VECTORSYNTH_ERRORS {FILEOPEN_ERR=-1, FERQ_ERR=-2, TIME_ERR=-3, RANGE_ERR=-4, ERBRANGE_ERR=-5, FERQERB_ERR=-6, MALLOC_ERR=-7, XALIGNED_ERR=-7};
 
   BassLine *outputAudio;
   int changeOver;//Used to indicate new audio is ready for changeOver
 
-  VectorBass(void);
-  virtual ~VectorBass(void);
+  VectorSynth(void);
+  virtual ~VectorSynth(void);
 
   int writeFile(const char *fName);
   int writeWavFile(const char *fName);
@@ -212,4 +212,4 @@ public:
   */
   void addWavPoint(double x, double y){Wave.add(new loc(x,y,0.));}
 };
-#endif //VECTORBASS_H_
+#endif //VECTORSYNTH_H_
