@@ -1,4 +1,16 @@
-The original Vector bass from 2022 : https://sourceforge.net/projects/mffmvectorbass/
+vector synth is an example of a few things :
+
+* A melody line generation tool which lets you plot the pitch, volume and
+   'generic waveform sound'. This means you can essentially hear a piece of
+   music, grab and plot the synth. waveform and generate your own melody lines
+   using this synth. Whether the synth be a persons voice, waveform or whatever !
+   This is accomplished by merging a FM (frequency modulator) and a Vector
+   Graphics application (XFig).
+* Rapid prototyping using a vector graphics application as the front end
+   and a custom engine as the back end.
+
+
+The original Vector bass from 1998 : https://sourceforge.net/projects/mffmvectorbass/
 The original website : http://mffmvectorbass.sourceforge.net/
 
 Latest repo : https://github.com/flatmax/vector-synth
