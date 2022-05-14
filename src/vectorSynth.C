@@ -525,3 +525,26 @@ goChangeOver(void){
   cout<<"VectorSynth::goChangeOver exit"<<endl;
   //  writeFile(oFName);
 }
+
+#include "config.h"
+#ifdef HAVE_EMSCRIPTEN
+#include <emscripten/bind.h>
+EMSCRIPTEN_BINDINGS(VectorSynth_ex) {
+  emscripten::class_<VectorSynth>("VectorSynth")
+  .constructor()
+  .function("addFreq", &VectorSynth::addFreq)
+  .function("setTime", &VectorSynth::setTime)
+  .function("setRange", &VectorSynth::setRange)
+  .function("addFreqRange", &VectorSynth::addFreqRange)
+  .function("addFreqPoint", &VectorSynth::addFreqPoint)
+  .function("addVolPoint", &VectorSynth::addVolPoint)
+  .function("addWavRange", &VectorSynth::addWavRange)
+  .function("addWavPoint", &VectorSynth::addWavPoint)
+  .function("process", &VectorSynth::process)
+  .function("generateSynth", &VectorSynth::generateSynth)
+  .function("goChangeOver", &VectorSynth::goChangeOver)
+  .function("getN", &VectorSynth::getN)
+  .function("getSample", &VectorSynth::getSample)
+  ;
+}
+#endif

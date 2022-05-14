@@ -211,5 +211,22 @@ public:
   @param y The waveform location >yi and < ya
   */
   void addWavPoint(double x, double y){Wave.add(new loc(x,y,0.));}
+
+  /** Get the numer of samples in the output audio
+  @return the number of samples in the output audio file
+  */
+  int getN(){return outputAudio->audioSampleCount;}
+
+  /** Get the audio from the synth line
+  @param n Get sample number n
+  @param sample Fill the sample in this variable
+  @return <0 on error
+  */
+  int getSample(int n, VBATYPE&sample){
+    if (n<0 || n>=getN())
+      return -1;
+    sample=outputAudio->audio[n];
+    return 0;
+  }
 };
 #endif //VECTORSYNTH_H_
