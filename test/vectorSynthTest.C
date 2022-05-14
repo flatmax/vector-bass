@@ -23,57 +23,57 @@ int main(int argc, char **arg){
     exit(-1);
   }
 
-  VectorSynth vb;
+  VectorSynth vs;
 
   // the following data is taken from newhello.fig
 
-  vb.addFreq(330.); // can add more then  one
-  vb.setTime(5.); // duration in seconds
-  vb.setRange(24.); // Number of piano semitones
+  vs.addFreq(330.); // can add more then  one
+  vs.setTime(5.); // duration in seconds
+  vs.setRange(24.); // Number of piano semitones
 
-  vb.addFreqRange(990., 900., 225., 3600.); // y axis over which the setRange semitones exist
+  vs.addFreqRange(990., 900., 225., 3600.); // y axis over which the setRange semitones exist
 
   // add some pitch variation curves
-  vb.addFreqPoint(1800., 4140.);
-  vb.addFreqPoint(1369., 2956.);
-  vb.addFreqPoint(2045., 2710.);
-  vb.addFreqPoint(2477., 3894.);
-  vb.addFreqPoint(2976., 2371.);
+  vs.addFreqPoint(1800., 4140.);
+  vs.addFreqPoint(1369., 2956.);
+  vs.addFreqPoint(2045., 2710.);
+  vs.addFreqPoint(2477., 3894.);
+  vs.addFreqPoint(2976., 2371.);
 
   // volume changes
-  vb.addVolPoint(1800., 901.);
-  vb.addVolPoint(2250., 900.);
-  vb.addVolPoint(2700., 900.);
-  vb.addVolPoint(3150., 900.);
-  vb.addVolPoint(3600., 900.);
-  vb.addVolPoint(4050., 900.);
-  vb.addVolPoint(4500., 900.);
-  vb.addVolPoint(4950., 900.);
-  vb.addVolPoint(5400., 900.);
-  vb.addVolPoint(6255., 899.);
+  vs.addVolPoint(1800., 901.);
+  vs.addVolPoint(2250., 900.);
+  vs.addVolPoint(2700., 900.);
+  vs.addVolPoint(3150., 900.);
+  vs.addVolPoint(3600., 900.);
+  vs.addVolPoint(4050., 900.);
+  vs.addVolPoint(4500., 900.);
+  vs.addVolPoint(4950., 900.);
+  vs.addVolPoint(5400., 900.);
+  vs.addVolPoint(6255., 899.);
 
   // waveform y range for max amplitude and min amplitude
-  vb.addWavRange(225., 6750., 225., 8100.);
+  vs.addWavRange(225., 6750., 225., 8100.);
 
   // define the waveform to oscillate
-  vb.addWavPoint(360., 7425.);
-  vb.addWavPoint(630., 6750.);
-  vb.addWavPoint(1035., 8100.);
-  vb.addWavPoint(1260., 7425.);
+  vs.addWavPoint(360., 7425.);
+  vs.addWavPoint(630., 6750.);
+  vs.addWavPoint(1035., 8100.);
+  vs.addWavPoint(1260., 7425.);
 
   int ret;
-  if ((ret=vb.process())!=0)
+  if ((ret=vs.process())!=0)
     return ret;
-  if ((ret=vb.generateSynth())<0)
+  if ((ret=vs.generateSynth())<0)
     return ret;
 
-  while (!vb.changeOver);
-  vb.goChangeOver();
+  while (!vs.changeOver);
+  vs.goChangeOver();
 
   #ifdef HAVE_LIBSNDFILE
-    vb.writeWavFile(arg[1]);
+    vs.writeWavFile(arg[1]);
   #else
-    cout<<"\n\nWARNING : libsndfile not detected on yoru system at build time, not saving the wavfile\n\n"<<endl;
+    cout<<"\n\nWARNING : libsndfile not detected on your system at build time, not saving the wavfile\n\n"<<endl;
   #endif
   return 1;
 }
