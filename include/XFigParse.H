@@ -24,6 +24,7 @@
 #include <stdlib.h>
 #include <values.h>
 #include <math.h>
+#include <string.h>
 
 #include "Location.H"
 #include "LinkList.H"

@@ -66,14 +66,15 @@ AC_SUBST([AM_CXXFLAGS], ["-s ERROR_ON_UNDEFINED_SYMBOLS=0 -s DEMANGLE_SUPPORT=1 
 AC_DEFINE(HAVE_EMSCRIPTEN, [], [whether building for emsdk])
 fi
 
-# eigen3
-PKG_CHECK_MODULES(EIGEN, eigen3 >= 3.0.0, HAVE_EIGEN="yes", HAVE_EIGEN="no")
-AC_SUBST(EIGEN_CFLAGS)
-AC_SUBST(EIGEN_LIBS)
-AM_CONDITIONAL(HAVE_EIGEN, test x$HAVE_EIGEN = xyes)
-if test "x$HAVE_EIGEN" == xyes ; then
-    AC_DEFINE(HAVE_EIGEN, [], [whether to build in Eigen support])
+# libsndfile
+PKG_CHECK_MODULES(LIBSNDFILE, sndfile, HAVE_LIBSNDFILE="yes", HAVE_LIBSNDFILE="no")
+AC_SUBST(LIBSNDFILE_CFLAGS)
+AC_SUBST(LIBSNDFILE_LIBS)
+AM_CONDITIONAL(HAVE_LIBSNDFILE, test x$HAVE_LIBSNDFILE = xyes)
+if test "x$HAVE_LIBSNDFILE" == xyes ; then
+    AC_DEFINE(HAVE_LIBSNDFILE, [], [whether to build in libsndfile support])
 fi
+
 
 AC_C_INLINE
 AC_FUNC_ERROR_AT_LINE
@@ -81,5 +82,5 @@ AC_FUNC_ERROR_AT_LINE
 AC_CONFIG_FILES([Makefile api/Makefile src/Makefile test/Makefile])
 AC_OUTPUT
 
-AM_COND_IF(HAVE_EIGEN, [AC_MSG_NOTICE([Eigen   ....................................... Present])], [AC_MSG_NOTICE([Eigen   ......................................... Not present
-Eigen tests and applications will not be built.])])
+AM_COND_IF(HAVE_LIBSNDFILE, [AC_MSG_NOTICE([libsndfile   ....................................... Present])], [AC_MSG_NOTICE([libsndfile   ......................................... Not present
+libsndfile code, tests and applications will not be built.])])

@@ -69,6 +69,11 @@ int main(int argc, char **arg){
 
   while (!vb.changeOver);
   vb.goChangeOver();
-  vb.writeWavFile(arg[1]);
+
+  #ifdef HAVE_LIBSNDFILE
+    vb.writeWavFile(arg[1]);
+  #else
+    cout<<"\n\nWARNING : libsndfile not detected on yoru system at build time, not saving the wavfile\n\n"<<endl;
+  #endif
   return 1;
 }

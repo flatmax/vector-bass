@@ -20,7 +20,9 @@
 #include <values.h>
 #include <unistd.h>
 
+#ifdef HAVE_LIBSNDFILE
 #include "libSndFileWrapper.H"
+#endif
 #include "vectorSynth.H"
 #include "XFigParse.H"
 
@@ -330,11 +332,13 @@ writeFile(const char *fName){
   return 0;
 }
 
+#ifdef HAVE_LIBSNDFILE
 int VectorSynth::
 writeWavFile(const char *fName){
   writeWav(fName, outputAudio->audioSampleCount, &outputAudio->audio[0], SAMPLE_RATE, 1/*channel cnt*/, 16/*bit cnt*/);
   return 0;
 }
+#endif
 
 int VectorSynth::
 processFile(const char *iFName){
