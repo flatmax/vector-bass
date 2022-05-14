@@ -33,7 +33,7 @@ m4_define([wasm_version], [wasm_current_version.wasm_revision_version.wasm_age_v
 
 AC_INIT( wasm, [wasm_version], [ https://github.com/madChopsCoderAu/WASM/issues ])
 AM_INIT_AUTOMAKE
-AC_CONFIG_SRCDIR([include/Test.H])
+AC_CONFIG_SRCDIR([include/vectorSynth.H])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
 AC_PREFIX_DEFAULT(/usr)

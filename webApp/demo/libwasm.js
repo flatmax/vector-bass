@@ -1,1 +1,0 @@
-../../src/.libs/libwasm.js

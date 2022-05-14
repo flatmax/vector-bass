@@ -26,26 +26,22 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-lib_LTLIBRARIES = libwasm.la libVB.la
+lib_LTLIBRARIES = libVS.la
 
-libwasm_la_SOURCES = Test.C
-libwasm_la_CPPFLAGS = -I$(top_srcdir)/include
-libwasm_la_LDFLAGS =  -version-info $(LT_CURRENT) -release $(LT_RELEASE)
-
-libVB_la_SOURCES = Location.C vectorSynth.C XFigOOutput.C
-libVB_la_CPPFLAGS = -I$(top_srcdir)/include
-libVB_la_LDFLAGS =  -version-info $(LT_CURRENT) -release $(LT_RELEASE)
+libVS_la_SOURCES = Location.C vectorSynth.C XFigOOutput.C
+libVS_la_CPPFLAGS = -I$(top_srcdir)/include
+libVS_la_LDFLAGS =  -version-info $(LT_CURRENT) -release $(LT_RELEASE)
 
 if HAVE_EMSCRIPTEN
-all-local: libwasm.la libVB.la
+all-local: libVS.la
 
-	@emcc --bind -s ALLOW_MEMORY_GROWTH=1 --llvm-opts 1 -s MODULARIZE=1 -s EXPORT_NAME="'libVB'" -s WASM=0 --memory-init-file 0 $(AM_CXXFLAGS) .libs/libVB.so -o .libs/libVB.js
-	mv .libs/libVB.js .libs/libVBNode.js
-	cp .libs/libVBNode.js ../nodejs/
-	@emcc --bind --llvm-opts 1 --memory-init-file 0 -s EXPORT_ES6=1 -s MODULARIZE=1 -s EXPORT_NAME="'libVB'" -s SINGLE_FILE=1 -s "BINARYEN_METHOD='native-wasm'" -s WASM=1 -s ALLOW_MEMORY_GROWTH=1 $(AM_CXXFLAGS) .libs/libVB.so -o .libs/libVB.js
-	cp .libs/libVB.js ../webcomponent/
+	@emcc --bind -s ALLOW_MEMORY_GROWTH=1 --llvm-opts 1 -s MODULARIZE=1 -s EXPORT_NAME="'libVS'" -s WASM=0 --memory-init-file 0 $(AM_CXXFLAGS) .libs/libVS.so -o .libs/libVS.js
+	mv .libs/libVS.js .libs/libVSNode.js
+	cp .libs/libVSNode.js ../nodejs/
+	@emcc --bind --llvm-opts 1 --memory-init-file 0 -s EXPORT_ES6=1 -s MODULARIZE=1 -s EXPORT_NAME="'libVS'" -s SINGLE_FILE=1 -s "BINARYEN_METHOD='native-wasm'" -s WASM=1 -s ALLOW_MEMORY_GROWTH=1 $(AM_CXXFLAGS) .libs/libVS.so -o .libs/libVS.js
+	cp .libs/libVS.js ../webcomponent/
 install-exec-hook:
-	cp .libs/libVB.js $(DESTDIR)$(libdir)
+	cp .libs/libVS.js $(DESTDIR)$(libdir)
 clean-local:
-	@rm -f .libs/libVB.node
+	@rm -f .libs/libVS.node
 endif

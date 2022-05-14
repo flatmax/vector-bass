@@ -1,16 +1,16 @@
 {
-  "name": "libwasm",
+  "name": "vector-synth",
   "version": "1.0.0",
-  "description": "WASM module from C++ example code for nodejs and the browser as a webcomponent",
-  "main": "libwasmNode.js",
+  "description": "Vector audio synthesiser",
+  "main": "LibVectorSynth.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/flatmax/WASM.git"
+    "url": "git+https://github.com/flatmax/vector-synth"
   },
   "author": "Matt Flax",
   "license": "GPL-2.0",
   "bugs": {
-    "url": "https://github.com/flatmax/WASM/issues"
+    "url": "https://github.com/flatmax/vector-synth/issues"
   },
   "homepage": "http://shop.audioinjector.net",
   "dependencies": {

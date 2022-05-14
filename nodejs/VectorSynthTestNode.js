@@ -29,10 +29,10 @@
 
 "use strict;"
 
-let libVB = require('./libVBNode.js');
-libVB().then((mod)=>{
-  libVB = mod;
-  let vs = new libVB.VectorSynth;
+let libVS = require('./libVSNode.js');
+libVS().then((mod)=>{
+  libVS = mod;
+  let vs = new libVS.VectorSynth;
 
   vs.addFreq(330.); // can add more then  one
   vs.setTime(5.); // duration in seconds

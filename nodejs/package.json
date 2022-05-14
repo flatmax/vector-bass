@@ -1,25 +1,26 @@
 {
-  "name": "libwasm_node",
+  "name": "libVectorSynth_node",
   "version": "1.0.1",
-  "description": "Nodejs WASM C++ example from https://github.com/flatmax/WASM",
-  "main": "WASMTestNode.js",
+  "description": "Nodejs vector audio synthesisor",
+  "main": "VectorSynthTestNode.js",
   "scripts": {
-    "test": "test/WASMTestNode.js"
+    "test": "test/VectorSynthTestNode.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/flatmax/WASM.git"
+    "url": "git+https://github.com/flatmax/vector-synth"
   },
   "keywords": [
     "WASM",
     "C++",
-    "nodejs",
-    "libwasm"
+    "vector",
+    "audio",
+    "synthesiser"
   ],
   "author": "Flatmax",
-  "license": "ISC",
+  "license": "GPL-2.0",
   "bugs": {
-    "url": "https://github.com/flatmax/WASM/issues"
+    "url": "https://github.com/flatmax/vector-synth/issues"
   },
-  "homepage": "https://github.com/flatmax/WASM#readme"
+  "homepage": "https://github.com/flatmax/vector-synth#Readme"
 }

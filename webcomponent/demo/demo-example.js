@@ -1,5 +1,5 @@
 import { LitElement, html } from 'lit';
-import '../libWASM';
+import '../LibVectorSynth';
 
 /** Example demo element for testing element loading
 */
@@ -18,9 +18,9 @@ class DemoExample extends LitElement {
         }
       </style>
 
-      <libwasm->
-        libwasm- loading ...
-      </libwasm->
+      <vector-synth>
+        vector-synth loading ...
+      </vector-synth>
       check your console for WASM output!
     `;
   }
