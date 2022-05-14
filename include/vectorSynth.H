@@ -218,15 +218,14 @@ public:
   int getN(){return outputAudio->audioSampleCount;}
 
   /** Get the audio from the synth line
+  Throws error if sample n doesn't exist
   @param n Get sample number n
-  @param sample Fill the sample in this variable
-  @return <0 on error
+  @returns Fill the sample in this variable
   */
-  int getSample(int n, VBATYPE&sample){
+  VBATYPE getSample(int n){
     if (n<0 || n>=getN())
-      return -1;
-    sample=outputAudio->audio[n];
-    return 0;
+      throw invalid_argument("n is out of range - getN() gives maximum N, 0<=n<getN()");
+    return outputAudio->audio[n];
   }
 };
 #endif //VECTORSYNTH_H_

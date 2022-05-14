@@ -22,6 +22,7 @@ a.out
 stamp-h1
 test/*Test
 m4
+a.out*
 a.out.js
 a.out.js.mem
 contest.*
@@ -37,3 +38,5 @@ libwasm.js
 vectorSynth
 vectorSynthTest
 *.fig.bak
+libVBNode.js
+libVB.js
