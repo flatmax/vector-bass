@@ -26,8 +26,12 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-noinst_PROGRAMS = RunTest
+noinst_PROGRAMS = RunTest vectorSynth
 
 RunTest_SOURCES = RunTest.C
 RunTest_CPPFLAGS = -I$(top_srcdir)/include
 RunTest_LDADD =  $(top_builddir)/src/libwasm.la
+
+vectorSynth_SOURCES = vectorSynthTest.cc
+vectorSynth_CPPFLAGS = -I$(top_srcdir)/include
+vectorSynth_LDADD =  $(top_builddir)/src/libVB.la -lsndfile

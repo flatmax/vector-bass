@@ -26,11 +26,15 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-lib_LTLIBRARIES = libwasm.la
+lib_LTLIBRARIES = libwasm.la libVB.la
 
 libwasm_la_SOURCES = Test.C
 libwasm_la_CPPFLAGS = -I$(top_srcdir)/include
 libwasm_la_LDFLAGS =  -version-info $(LT_CURRENT) -release $(LT_RELEASE)
+
+libVB_la_SOURCES = Location.C vectorSynth.C XFigOOutput.C
+libVB_la_CPPFLAGS = -I$(top_srcdir)/include
+libVB_la_LDFLAGS =  -version-info $(LT_CURRENT) -release $(LT_RELEASE)
 
 if HAVE_EMSCRIPTEN
 all-local: libwasm.la

@@ -20,7 +20,7 @@
 #include <values.h>
 #include <unistd.h>
 
-#include "../mffm-libsndfilew-1.2/libSndFileWrapper.H"
+#include "libSndFileWrapper.H"
 #include "vectorSynth.H"
 #include "XFigParse.H"
 
