@@ -20,6 +20,7 @@
 #include <values.h>
 #include <unistd.h>
 
+#include "config.h"
 #ifdef HAVE_LIBSNDFILE
 #include "libSndFileWrapper.H"
 #endif
