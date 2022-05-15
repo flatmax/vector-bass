@@ -24,15 +24,15 @@ int main(int argc, char **arg){
     exit(-1);
   }
 
-  VectorSynth vb;
-  vb.processFile(arg[1]);
-  while (!vb.changeOver);
-  vb.goChangeOver();
+  VectorSynth vs;
+  vs.processFile(arg[1]);
+  while (!vs.changeOver);
+  vs.goChangeOver();
 
 #ifdef HAVE_LIBSNDFILE
-  vb.writeWavFile(arg[2]);
+  return vs.writeWavFile(arg[2]);
 #else
-  cout<<"\n\nWARNING : libsndfile not detected on yoru system at build time, not saving the wavfile\n\n"<<endl;
+  cout<<"\n\nWARNING : libsndfile not detected on your system at build time, not saving the wavfile\n\n"<<endl;
 #endif
   return 1;
 }
