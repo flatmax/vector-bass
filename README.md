@@ -1,4 +1,4 @@
-#Vector Graphic Audio Synth.
+# Vector Graphic Audio Synth.
 
 Vector synth is an example of a few things :
 
