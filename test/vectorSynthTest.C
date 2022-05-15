@@ -31,7 +31,7 @@ int main(int argc, char **arg){
   vs.setTime(5.); // duration in seconds
   vs.setRange(24.); // Number of piano semitones
 
-  vs.addFreqRange(990., 900., 225., 3600.); // y axis over which the setRange semitones exist
+  vs.addFreqRange(900., 3600.); // y axis over which the setRange semitones exist
 
   // add some pitch variation curves
   vs.addFreqPoint(1800., 4140.);
@@ -53,7 +53,7 @@ int main(int argc, char **arg){
   vs.addVolPoint(6255., 899.);
 
   // waveform y range for max amplitude and min amplitude
-  vs.addWavRange(225., 6750., 225., 8100.);
+  vs.addWavRange(6750., 8100.);
 
   // define the waveform to oscillate
   vs.addWavPoint(360., 7425.);

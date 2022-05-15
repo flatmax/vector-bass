@@ -169,14 +169,12 @@ public:
 
   /** Add points for the frequency measurement line, which hods range semitones.
   I think xi and xa are not important here only yi and ya
-  @param xi The minimum ERB range line x value
   @param yi The minimum ERB range line y value
-  @param xa The maximum ERB range line x value
   @param ya The maximum ERB range line y value
   */
-  void addFreqRange(double xi, double yi, double xa, double ya){
-    ERBRange.add(new loc(xi,yi,0.));
-    ERBRange.add(new loc(xa,ya,0.));
+  void addFreqRange(double yi, double ya){
+    ERBRange.add(new loc(0.,yi,0.));
+    ERBRange.add(new loc(0.,ya,0.));
   }
 
   /** Add a point on the frequency range line which is the ferquency to play at
@@ -195,14 +193,12 @@ public:
 
   /** Add points for the waveform line, which holds waveform maximum and minimum in y.
   I think xi and xa are not important here only yi and ya
-  @param xi The minimum wav range line x value
   @param yi The minimum wav range line y value
-  @param xa The maximum wav range line x value
   @param ya The maximum wav range line y value
   */
-  void addWavRange(double xi, double yi, double xa, double ya){
-    WavRange.add(new loc(xi,yi,0.));
-    WavRange.add(new loc(xa,ya,0.));
+  void addWavRange(double yi, double ya){
+    WavRange.add(new loc(0.,yi,0.));
+    WavRange.add(new loc(0.,ya,0.));
   }
 
   /** Add a point on the waveform line which is the waveform to play at
