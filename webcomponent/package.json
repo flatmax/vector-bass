@@ -1,13 +1,13 @@
 {
   "name": "vector-synth",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Vector audio synthesiser",
   "main": "LibVectorSynth.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/flatmax/vector-synth"
   },
-  "author": "Matt Flax",
+  "author": "flatmax",
   "license": "GPL-2.0",
   "bugs": {
     "url": "https://github.com/flatmax/vector-synth/issues"
