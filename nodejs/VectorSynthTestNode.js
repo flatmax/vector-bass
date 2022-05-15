@@ -38,7 +38,7 @@ libVS().then((mod)=>{
   vs.setTime(5.); // duration in seconds
   vs.setRange(24.); // Number of piano semitones
 
-  vs.addFreqRange(990., 900., 225., 3600.); // y axis over which the setRange semitones exist
+  vs.addFreqRange(900., 3600.); // y axis over which the setRange semitones exist
 
   // add some pitch variation curves
   vs.addFreqPoint(1800., 4140.);
@@ -60,7 +60,7 @@ libVS().then((mod)=>{
   vs.addVolPoint(6255., 899.);
 
   // waveform y range for max amplitude and min amplitude
-  vs.addWavRange(225., 6750., 225., 8100.);
+  vs.addWavRange(6750., 8100.);
 
   // define the waveform to oscillate
   vs.addWavPoint(360., 7425.);
@@ -76,10 +76,10 @@ libVS().then((mod)=>{
 
   vs.goChangeOver();
 
-  // #ifdef HAVE_LIBSNDFILE
-  //   vs.writeWavFile(arg[1]);
-  // #else
-    console.log("\n\nWARNING : libsndfile not detected on your system at build time, not saving the wavfile\n\n");
-  // #endif
-  // return 1;
+  console.log("\n\nWARNING : libsndfile not detected on your system at build time, not saving the wavfile\n\n");
+
+  let N=vs.getN();
+  console.log('N='+N);
+  for (let n=0; n<N; n++)
+    vs.getSample(n); // this is the audio sample at index n
 });
